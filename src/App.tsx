@@ -1,8 +1,5 @@
+import { List, ListSubheader, ListItemText } from "@mui/material";
 import { useState, useEffect } from "react";
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 
 const App = (props: any) => {
 	const [users, setUsers] = useState([
@@ -17,18 +14,21 @@ const App = (props: any) => {
 			.then((json) => {setUsers(json); setLoading(false)});
 	});
 	return (
-		<div className="App">
-			<h1>Lista de usuários</h1>
-			<div className="card">
-        {loading ? <h2>Carregando...</h2> : null}
-				<ul>
-					{users.map((user) => (
-						<li key={user.id}>{user.name}<Avatar src="/static/images/avatar/3.jpg" /></li>
-					))}
-				</ul>
-			</div>
-      <Button variant="contained">Curtir</Button>
-		</div>
+    <List
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <ListSubheader component="div" id="nested-list-subheader">Lista de Usuários</ListSubheader>
+      }
+      >
+      {
+        users.map((user) => (
+          <ListItemText key={user.id} primary={user.name}></ListItemText>
+        ))
+      }
+
+    </List>
 	);
 };
 
