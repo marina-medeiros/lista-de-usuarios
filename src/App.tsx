@@ -18,9 +18,9 @@ const App = (props: any) => {
         .then((json) => {setPosts(json); setLoading(false)});
     });
     return (
-      
       <div className="App">
-        <h1>Posts {userMain.id}</h1>
+        <h2>Posts de {userMain.name}</h2>
+        <Button onClick={() => {setPage(1)}} variant="text">Tarefas de {userMain.name}</Button>
         <div className="card">
           {loading ? <h2>Carregando...</h2> : null}
           <ul>
@@ -46,9 +46,9 @@ const App = (props: any) => {
         .then((json) => {setTodos(json); setLoading(false)});
     });
     return (
-      
       <div className="App">
-        <h1>Tarefas: {userMain.id}</h1>
+        <h2>Tarefas de {userMain.name}</h2>
+        <Button onClick={() => {setPage(2)}} variant="text">Posts de {userMain.name}</Button>
         <div className="card">
           {loading ? <h2>Carregando...</h2> : null}
           <ul>
@@ -78,7 +78,7 @@ const App = (props: any) => {
     return (
       
       <div className="App">
-        <h1>Lista de usuários</h1>
+        <h2>Lista de usuários</h2>
         <div className="card">
           {loading ? <h2>Carregando...</h2> : null}
           <ul>
@@ -109,10 +109,9 @@ const App = (props: any) => {
       return null;
     } 
   }
-
 	return (
     <div>
-      <h1>Página de Marina</h1>
+      <h1>Rede social</h1>
       <Button onClick={() => {setPage(0)}} variant="text">Pagina inicial</Button>
       
       
